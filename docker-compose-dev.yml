@@ -11,20 +11,20 @@ services:
     volumes:
       - "./cFS:/code/cFS"
     working_dir: /code/cFS/build/exe/cpu2
-#  rosgsw:
-#    extends:
-#      file: docker-compose-prod.yml
-#      service: rosgsw
-#    image: "rosgsw-dev"
-#    build:
-#      # NOTE: Actual build process must be executed discretely for dev mounts
-#      context: .
-#      dockerfile: edoras.Dockerfile
-#      target: rosgsw-dev
-#    volumes:
-#      - "./cFS:/code/cFS"
-#      - "./brash:/code/edoras"
-#    working_dir: /code/edoras
+  rosgsw:
+    extends:
+      file: docker-compose-prod.yml
+      service: rosgsw
+    image: "rosgsw-dev"
+    build:
+      # NOTE: Actual build process must be executed discretely for dev mounts
+      context: .
+      dockerfile: edoras.Dockerfile
+      target: rosgsw-dev
+    volumes:
+      - "./cFS:/code/cFS"
+      - "./edoras:/code/edoras"
+    working_dir: /code/edoras
 #  rosfsw:
 #    extends:
 #      file: docker-compose-prod.yml
