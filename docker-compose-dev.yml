@@ -1,0 +1,52 @@
+services:
+  fsw:
+    extends:
+      file: docker-compose-prod.yml
+      service: fsw
+    image: "cfs-dev"
+    build:
+      context: .
+      dockerfile: cfs.Dockerfile
+      target: "cfs-dev"
+    volumes:
+      - "./cFS:/code/cFS"
+    working_dir: /code/cFS/build/exe/cpu2
+#  rosgsw:
+#    extends:
+#      file: docker-compose-prod.yml
+#      service: rosgsw
+#    image: "rosgsw-dev"
+#    build:
+#      # NOTE: Actual build process must be executed discretely for dev mounts
+#      context: .
+#      dockerfile: edoras.Dockerfile
+#      target: rosgsw-dev
+#    volumes:
+#      - "./cFS:/code/cFS"
+#      - "./brash:/code/edoras"
+#    working_dir: /code/edoras
+#  rosfsw:
+#    extends:
+#      file: docker-compose-prod.yml
+#      service: rosfsw
+#    image: "rosfsw-dev"
+#    build:
+#      context: .
+#      dockerfile: edoras.Dockerfile
+#      target: rosfsw-dev
+#    volumes:
+#      - "./edoras:/code/edoras"
+#    working_dir: /code/edoras
+  novnc:
+    extends:
+      file: docker-compose-prod.yml
+      service: novnc
+
+# NOTE: networks apparently can't be imported from related file?
+networks:
+  spaceip:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1      

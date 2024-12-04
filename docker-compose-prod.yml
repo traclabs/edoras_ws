@@ -1,0 +1,76 @@
+version: "3.8"
+services:
+  # NOTE: exposed ports are for debug purposes only. Volume mounts are for both debug and logging. 
+  fsw:
+    image: "ghcr.io/traclabs/edoras_ws:cfs"
+    command: "./core-cpu2"
+    environment:
+      - DISPLAY=novnc:0.0
+    # Enable 123 forwarding to access/test the cFE NTP server from outside docker
+#    ports:
+#      - "123:123/udp"
+    sysctls:
+      - fs.mqueue.msg_max=64
+    networks:
+      spaceip:
+        ipv4_address: 10.5.0.3
+    build:
+      context: .
+      dockerfile: cfs.Dockerfile
+      target: cfs
+      args:
+        - USER_UID=${UID:-1000}
+  rosgsw:
+    image: "ghcr.io/traclabs/edoras_ws:rosgsw"
+    command: "./run_rosgsw.sh"
+    env_file:
+      - env.sh
+    environment:
+      - ROS_DOMAIN_ID=2
+      - DISPLAY=novnc:0.0
+    networks:
+      spaceip:
+        ipv4_address: 10.5.0.2
+    build:
+      context: .
+      dockerfile: brash.Dockerfile
+      target: rosgsw
+      args:
+        - USER_UID=${UID:-1000}
+  rosfsw:
+    image: "ghcr.io/traclabs/edoras_ws:rosfsw"
+    command: "./run_rosfsw.sh"
+    env_file:
+      - env.sh
+    environment:
+      - ROS_DOMAIN_ID=4
+      - DISPLAY=novnc:0.0
+    networks:
+      spaceip:
+        ipv4_address: 10.5.0.4
+    build:
+      context: .
+      dockerfile: edoras.Dockerfile
+      target: rosfsw
+      args:
+        - USER_UID=${UID:-1000}
+  novnc:
+    image: theasp/novnc:latest
+    environment:
+      # Adjust to your screen size
+      - DISPLAY_WIDTH=1920
+      - DISPLAY_HEIGHT=1080
+      - RUN_XTERM=no
+    ports:
+      - "8080:8080"
+    networks:
+      spaceip:
+        ipv4_address: 10.5.0.5
+        
+networks:
+  spaceip:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1
