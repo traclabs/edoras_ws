@@ -27,6 +27,22 @@ clone_edoras() {
 
   echo "* Cloning edoras metapackage... "
   git clone -b master git@github.com:traclabs/edoras edoras
+  echo "* Cloning gateway..."
+  pushd src
+  git clone -b master git@github.com:traclabs/gateway_demos
+  popd
+}
+
+clone_edoras_code() {
+
+  if [ -d "edoras_core" ]
+  then
+    echo "* Directory edoras_core already exists, not cloning"
+    return 1
+  fi
+
+  echo "* Cloning edoras_core... "
+  git clone -b master git@github.com:traclabs/edoras_core edoras_core
 }
 
 echo ""
@@ -38,5 +54,10 @@ echo ""
 echo "##### Clone edoras workspace #####"
 echo ""
 clone_edoras 
+
+echo ""
+echo "##### Clone edoras_code workspace #####"
+echo ""
+clone_edoras_code 
 
 
