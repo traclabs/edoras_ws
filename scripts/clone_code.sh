@@ -30,6 +30,8 @@ clone_edoras() {
   echo "* Cloning gateway..."
   pushd src
   git clone -b master git@github.com:traclabs/gateway_demos
+  echo "* Cloning additional robots for demos...*"
+  git clone -b main git@github.com:space-ros/simulation
   popd
 }
 
