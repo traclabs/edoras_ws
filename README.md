@@ -49,4 +49,4 @@ Run Rover example
    ```
    cd /code/edoras
    source install/setup.bash
-   ros2 launch edoras_demos rover_ground_demo.launch.py
+   ros2 launch edoras_demos rover_ground_demo_multihost.launch.py
