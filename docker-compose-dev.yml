@@ -3,13 +3,15 @@ services:
     extends:
       file: docker-compose-prod.yml
       service: fsw
-    image: "cfs-dev"
+    image: "fsw-dev"
     build:
       context: .
-      dockerfile: cfs.Dockerfile
-      target: "cfs-dev"
+      dockerfile: fsw.Dockerfile
+      target: "fsw-dev"
     volumes:
       - "./cFS:/code/cFS"
+      - "./edoras_core:/code/edoras_core"
+      - "./edoras:/code/edoras"
     working_dir: /code/cFS/build/exe/cpu2
   rosgsw:
     extends:
@@ -19,10 +21,9 @@ services:
     build:
       # NOTE: Actual build process must be executed discretely for dev mounts
       context: .
-      dockerfile: edoras.Dockerfile
-      target: rosgsw-dev
+      dockerfile: fsw.Dockerfile
+      target: fsw-dev
     volumes:
-      - "./cFS:/code/cFS"
       - "./edoras:/code/edoras"
     working_dir: /code/edoras
 #  rosfsw:

@@ -1,4 +1,4 @@
-FROM ubuntu:noble AS cfs-dev
+FROM ros:jazzy-ros-base-noble AS fsw-dev
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y \
@@ -9,6 +9,21 @@ RUN apt update && apt install -y \
   git \
   pkg-config \
   sudo \
+  libnlopt-dev \
+  libnlopt-cxx-dev \
+  git-lfs \
+  ros-jazzy-urdf \
+  ros-jazzy-kdl-parser \
+  ros-jazzy-xacro \
+  ros-jazzy-joint-state-publisher \
+  ros-jazzy-rviz2 \
+  ros-jazzy-control-msgs \
+#  ros-jazzy-diff-drive-controller \
+#  ros-jazzy-effort-controllers \
+#  ros-jazzy-hardware-interface \
+#  ros-jazzy-ign-ros2-control \
+#  ros-jazzy-imu-sensor-broadcaster \
+#  ros-jazzy-velocity-controllers \
   && rm -rf /var/lib/apt/lists/*
 
 # Switch to bash shell
@@ -38,13 +53,17 @@ RUN echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
 
 USER ${USERNAME}
 
+# Set up sourcing
+COPY --chown=${USERNAME}:${USERNAME} ./config/fsw_entrypoint.sh ${CODE_DIR}/entrypoint.sh
+RUN echo 'source ${CODE_DIR}/entrypoint.sh' >> ~/.bashrc
+
 # Set workdir
 WORKDIR ${CODE_DIR}/cFS/build/exe/cpu2
 
 ##################################################
 # Production
 ##################################################
-FROM cfs-dev AS cfs
+FROM fsw-dev AS fsw
 
 # Copy cFS
 COPY --chown=${USERNAME}:${USERNAME} ${CFS_LOCAL} ${CODE_DIR}/cFS
