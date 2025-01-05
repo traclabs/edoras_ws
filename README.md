@@ -56,7 +56,7 @@ Run Rover example
 
    ```
    cd /code/edoras
-   ros2 service call /to_lab_enable_output_cmd std_srvs/srv/SetBool data:\ false\
+   ros2 service call /to_lab_enable_output_cmd std_srvs/srv/SetBool data:\ false\ 
    ```
    You'll see in the first terminal something like: Telemetry for IP: 10.5.0.3 activated. In the rosgsw's Rviz window, you'll see a red arrow show up, showing that telemetry from the rover is being received back.
 
@@ -94,7 +94,7 @@ Run Gateway example
 
    ```
    cd /code/edoras
-   ros2 service call /to_lab_enable_output_cmd std_srvs/srv/SetBool data:\ false\
+   ros2 service call /to_lab_enable_output_cmd std_srvs/srv/SetBool data:\ false\ 
    ```
    You'll see in the first terminal something like: Telemetry for IP: 10.5.0.3 activated. In the rosgsw's Rviz window, you'll see a red arrow show up, showing that telemetry from the rover is being received back.
 
