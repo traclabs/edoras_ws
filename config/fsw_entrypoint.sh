@@ -1,7 +1,7 @@
 #!/bin/bash
  
 # Source ROS 2
-source /opt/ros/jazzy/setup.bash
+source /opt/ros/humble/setup.bash
   
 if [ -f /code/edoras/install/setup.bash ]
 then

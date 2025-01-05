@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 EDORAS_APP_BRANCH="master"
+EDORAS_CORE_BRANCH="humble"
+EDORAS_BRANCH="humble"
+SPOT_BRANCH="SpaceROS-Challenge"
 
 # *******************
 # clone_cfs
@@ -34,7 +37,7 @@ clone_edoras_code() {
   fi
 
   echo "* Cloning edoras_core... "
-  git clone -b master git@github.com:traclabs/edoras_core.git edoras_core
+  git clone -b $EDORAS_CORE_BRANCH git@github.com:traclabs/edoras_core.git edoras_core
 }
 
 
@@ -45,23 +48,18 @@ clone_edoras() {
 
   if [ ! -d "edoras" ]; then
     echo "* Cloning edoras metapackage... "
-    git clone -b master git@github.com:traclabs/edoras.git edoras
+    git clone -b $EDORAS_BRANCH git@github.com:traclabs/edoras.git edoras
   fi
+
+  echo "* Cloning champ code...*"
 
   pushd edoras
   pushd src
-
-  echo "* Cloning additional robots for demos...*"
-
-  if [ ! -d "gateway_demos" ]; then
-    git clone -b master git@github.com:traclabs/gateway_demos.git gateway_demos
+ 
+  if [ ! -d "spot_ros2_ign" ]; then
+    git clone -b $SPOT_BRANCH git@github.com:traclabs/spot_ros2_ign.git
   fi
-  if [ ! -d "simulation" ]; then
-    git clone -b main git@github.com:space-ros/simulation.git simulation
-  fi
-  if [ ! -d "demos" ]; then
-    git clone -b main git@github.com:space-ros/demos.git demos
-  fi
+  
   if [ ! -d "trac_ik" ]; then
     git clone -b rolling-devel git@bitbucket.org:traclabs/trac_ik
   fi

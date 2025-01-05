@@ -1,36 +1,35 @@
-FROM ros:jazzy-ros-base-noble AS fsw-dev
+FROM osrf/ros:humble-desktop AS fsw-dev
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt update && apt install -y \
+
+USER root
+RUN  apt update && apt install -y \
   build-essential \
   gdb \
   nano \
   cmake \
   git \
   pkg-config \
-  sudo \
+  ros-humble-ros-ign-gazebo \
+  ros-humble-gazebo-ros-pkgs \
+  ros-humble-ros-gz \
   libnlopt-dev \
   libnlopt-cxx-dev \
-  git-lfs \
-  ros-jazzy-urdf \
-  ros-jazzy-kdl-parser \
-  ros-jazzy-xacro \
-  ros-jazzy-joint-state-publisher \
-  ros-jazzy-rviz2 \
-  ros-jazzy-control-msgs \
-#  ros-jazzy-diff-drive-controller \
-#  ros-jazzy-effort-controllers \
-#  ros-jazzy-hardware-interface \
-#  ros-jazzy-ign-ros2-control \
-#  ros-jazzy-imu-sensor-broadcaster \
-#  ros-jazzy-velocity-controllers \
+  ros-humble-urdf \
+  ros-humble-kdl-parser \
+  ros-humble-xacro \
+  ros-humble-joint-state-publisher \
+  ros-humble-joint-state-publisher-gui \
+  ros-humble-rviz2 \
+  ros-humble-robot-localization \
+  ros-humble-ign-ros2-control \
   && rm -rf /var/lib/apt/lists/*
 
 # Switch to bash shell
 SHELL ["/bin/bash", "-c"]
 
 # Create a brash user
-ENV USERNAME ubuntu
+ENV USERNAME=traclabs
 ENV CODE_DIR=/code
 ENV CFS_LOCAL=cFS
 
@@ -39,17 +38,18 @@ ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
 
 # Create new user and home directory
-#RUN groupadd --gid ${USER_GID} ${USERNAME} \
-#&& useradd --uid ${USER_UID} --gid ${USER_GID} --create-home ${USERNAME} \
-#&& echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
+RUN groupadd --gid ${USER_GID} ${USERNAME} \
+&& useradd --uid ${USER_UID} --gid ${USER_GID} --create-home ${USERNAME} \
+&& echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
+&& chmod 0440 /etc/sudoers.d/${USERNAME} \
+&& mkdir -p ${CODE_DIR} \
+&& chown -R ${USER_UID}:${USER_GID} ${CODE_DIR}
+
+#RUN echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
 #&& chmod 0440 /etc/sudoers.d/${USERNAME} \
 #&& mkdir -p ${CODE_DIR} \
 #&& chown -R ${USER_UID}:${USER_GID} ${CODE_DIR}
 
-RUN echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
-&& chmod 0440 /etc/sudoers.d/${USERNAME} \
-&& mkdir -p ${CODE_DIR} \
-&& chown -R ${USER_UID}:${USER_GID} ${CODE_DIR}
 
 USER ${USERNAME}
 

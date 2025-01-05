@@ -8,9 +8,14 @@ CODE_DIR="/code"
 
 build_edoras_core() {
   docker compose -f ${COMPOSE_FILE} run -w ${CODE_DIR}/edoras_core fsw /bin/bash  -ic "mkdir -p build && mkdir -p install && \
-                     cd build && source /opt/ros/jazzy/setup.bash && \
+                     cd build && source /opt/ros/humble/setup.bash && \
                      cmake .. -DCMAKE_INSTALL_PREFIX=../install && \
                      make && make install" 
+  ret=$?
+  if [ $ret -ne 0 ]; then
+    echo "!! Failed in building edoras_core !!"
+    return 1  
+  fi   
 }
 
 build_cfe_code() {
@@ -48,4 +53,11 @@ build_cfe_code() {
 }
 
 build_edoras_core
-build_cfe_code
+
+ret=$?
+if [ $ret -eq 0 ]; then
+  echo "edoras core seems to have built fine, now build cFS"
+  build_cfe_code
+fi   
+
+
