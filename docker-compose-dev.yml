@@ -21,8 +21,8 @@ services:
     build:
       # NOTE: Actual build process must be executed discretely for dev mounts
       context: .
-      dockerfile: fsw.Dockerfile
-      target: fsw-dev
+      dockerfile: edoras.Dockerfile
+      target: rosgsw-dev
     volumes:
       - "./edoras:/code/edoras"
     working_dir: /code/edoras
