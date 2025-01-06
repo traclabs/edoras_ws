@@ -23,6 +23,9 @@ RUN  apt update && apt install -y \
   ros-humble-rviz2 \
   ros-humble-robot-localization \
   ros-humble-ign-ros2-control \
+  ros-humble-ros2controlcli \
+  ros-humble-joint-trajectory-controller \
+  ros-humble-joint-state-broadcaster \
   && rm -rf /var/lib/apt/lists/*
 
 # Switch to bash shell

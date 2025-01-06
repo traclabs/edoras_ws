@@ -3,7 +3,7 @@
 EDORAS_APP_BRANCH="master"
 EDORAS_CORE_BRANCH="humble"
 EDORAS_BRANCH="humble"
-SPOT_BRANCH="SpaceROS-Challenge"
+SPOT_BRANCH="humble" #"SpaceROS-Challenge"
 
 # *******************
 # clone_cfs
