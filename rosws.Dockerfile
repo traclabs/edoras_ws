@@ -92,7 +92,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
   ros-jazzy-controller-manager \
   ros-jazzy-joint-trajectory-controller \
   ros-jazzy-rqt* \
-  ignition-fortress \
+#  ignition-fortress \
   ros-jazzy-ros-gz-sim \
   ros-jazzy-ros-gz-bridge \
   ros-jazzy-robot-localization \
@@ -100,10 +100,10 @@ RUN sudo apt-get update && sudo apt-get install -y \
   ros-jazzy-twist-mux \
   ros-jazzy-joy-linux \
   ros-jazzy-imu-tools \
-  ros-jazzy-ign-ros2-control \
+#  ros-jazzy-ign-ros2-control \
   ros-jazzy-joint-state-broadcaster \
   ros-jazzy-diff-drive-controller \
-  ros-jazzy-clearpath-gz \
+#  ros-jazzy-clearpath-gz \
  && sudo rm -rf /var/lib/apt/lists/*
 
 WORKDIR ${CODE_DIR}/edoras
