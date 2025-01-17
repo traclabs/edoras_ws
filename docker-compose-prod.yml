@@ -39,7 +39,7 @@ services:
         - USER_UID=${UID:-1000}
   rosfsw:
     image: "ghcr.io/traclabs/edoras_ws:rosfsw"
-    command: "./run_rosfsw.sh"
+    command: "sleep infinity" #"./run_rosfsw.sh"
     env_file:
       - env.sh
     environment:
@@ -50,7 +50,7 @@ services:
         ipv4_address: 10.5.0.4
     build:
       context: .
-      dockerfile: edoras.Dockerfile
+      dockerfile: rosws.Dockerfile
       target: rosfsw
       args:
         - USER_UID=${UID:-1000}

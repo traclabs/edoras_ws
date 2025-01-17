@@ -9,21 +9,7 @@ RUN apt update && apt install -y \
   git \
   pkg-config \
   sudo \
-  libnlopt-dev \
-  libnlopt-cxx-dev \
   git-lfs \
-  ros-jazzy-urdf \
-  ros-jazzy-kdl-parser \
-  ros-jazzy-xacro \
-  ros-jazzy-joint-state-publisher \
-  ros-jazzy-rviz2 \
-  ros-jazzy-control-msgs \
-#  ros-jazzy-diff-drive-controller \
-#  ros-jazzy-effort-controllers \
-#  ros-jazzy-hardware-interface \
-#  ros-jazzy-ign-ros2-control \
-#  ros-jazzy-imu-sensor-broadcaster \
-#  ros-jazzy-velocity-controllers \
   && rm -rf /var/lib/apt/lists/*
 
 # Switch to bash shell

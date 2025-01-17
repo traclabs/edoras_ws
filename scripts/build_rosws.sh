@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo ""
-echo "##### Building edoras #####"
+echo "##### Building rosgsw #####"
 echo ""
 
 COMPOSE_FILE="docker-compose-dev.yml"
@@ -21,7 +21,7 @@ build_edoras_code() {
 
  
 # Going...
-echo "**** Building brash... ****"
+echo "**** Building edoras... ****"
 build_edoras_code
 edoras_res=$?
 
