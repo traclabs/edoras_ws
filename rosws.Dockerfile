@@ -63,6 +63,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
   ros-jazzy-geometric-shapes \
   ros-jazzy-rqt-robot-steering \
   ros-jazzy-rqt* \
+  ros-jazzy-topic-tools \  
   libdwarf-dev \
   libelf-dev \
   libsqlite3-dev \
@@ -100,6 +101,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
   ros-jazzy-twist-mux \
   ros-jazzy-joy-linux \
   ros-jazzy-imu-tools \
+  ros-jazzy-topic-tools \
 #  ros-jazzy-ign-ros2-control \
   ros-jazzy-joint-state-broadcaster \
   ros-jazzy-diff-drive-controller \

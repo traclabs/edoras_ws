@@ -62,6 +62,9 @@ clone_edoras() {
   if [ ! -d "demos" ]; then
     git clone -b main git@github.com:space-ros/demos.git demos
   fi
+  if [ ! -d "roverrobotics_ros2" ]; then
+    git clone -b main git@github.com:RoverRobotics/roverrobotics_ros2
+  fi  
   if [ ! -d "trac_ik" ]; then
     git clone -b rolling-devel git@bitbucket.org:traclabs/trac_ik
   fi
