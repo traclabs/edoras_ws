@@ -31,9 +31,9 @@ Run Rover example
    docker compose -f docker-compose-dev.yml up
    ```
    This will start 3 services: fsw, rosgsw and novnc. fsw starts cFS already
-2. Open a terminal in fsw, launch robot on the flight side:
+2. Open a terminal in rosfsw, launch robot on the flight side:
    ```
-   docker exec -it edoras_ws-fsw-1 bash
+   docker exec -it edoras_ws-rosfsw-1 bash
    ```
    Inside the container:
    ```
@@ -69,9 +69,9 @@ Run Gateway example
    docker compose -f docker-compose-dev.yml up
    ```
    This will start 3 services: fsw, rosgsw and novnc. fsw starts cFS already
-2. Open a terminal in fsw, launch robot on the flight side:
+2. Open a terminal in rosfsw, launch robot on the flight side:
    ```
-   docker exec -it edoras_ws-fsw-1 bash
+   docker exec -it edoras_ws-rosfsw-1 bash
    ```
    Inside the container:
    ```
