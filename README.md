@@ -21,7 +21,7 @@ Building docker images
 4. Build cFS and edoras ROS2 workspace:
    ```
    ./scripts/build_cfe.sh
-   ./scripts/build_edoras.sh
+   ./scripts/build_rosws.sh
    ```
 Run Rover example
 =================
