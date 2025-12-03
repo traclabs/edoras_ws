@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-EDORAS_APP_BRANCH="master"
+EDORAS_APP_BRANCH="edoras_gateway_dual_arm"
+CFS_BRANCH="edoras_dual_robot_demo"
 
 # *******************
 # clone_cfs
@@ -14,7 +15,7 @@ clone_cfs() {
   fi
 
   echo "* Cloning cFS..."
-  git clone -b edoras git@github.com:traclabs/cFS.git
+  git clone -b $CFS_BRANCH git@github.com:traclabs/cFS.git
   pushd cFS
   git submodule update --init --recursive
   popd

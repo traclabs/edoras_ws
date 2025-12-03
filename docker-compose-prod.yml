@@ -3,7 +3,7 @@ services:
   # NOTE: exposed ports are for debug purposes only. Volume mounts are for both debug and logging. 
   fsw:
     image: "ghcr.io/traclabs/edoras_ws:cfs"
-    command: "sleep infinity" #"./core-cpu2"
+    command: "./core-cpu2" #"sleep infinity" #"./core-cpu2"
     environment:
       - DISPLAY=novnc:0.0
     # Enable 123 forwarding to access/test the cFE NTP server from outside docker
