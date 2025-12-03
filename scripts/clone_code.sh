@@ -66,7 +66,7 @@ clone_edoras() {
     git clone -b main git@github.com:RoverRobotics/roverrobotics_ros2
   fi  
   if [ ! -d "trac_ik" ]; then
-    git clone -b rolling-devel git@bitbucket.org:traclabs/trac_ik
+    git clone -b jazzy git@bitbucket.org:traclabs/trac_ik
   fi
   touch trac_ik/trac_ik_kinematics_plugin/COLCON_IGNORE
   
