@@ -61,7 +61,7 @@ Pre-requisite:
 For the rover example, you'll have to change two branches:
 
 * In cFS: Switch to branch *edoras*
-* In edoras_app (located in cFS/apps/edoras_app): Switch to *master*
+* In edoras_app (located in cFS/apps/edoras_app): Switch to *edoras_rover*
 * Rebuild cFS:
   ```
   cd ~/edoras_ws
