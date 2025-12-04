@@ -116,6 +116,7 @@ mode="include_robots" # skip_robots
 
 if [[$# -eq 1]]; then
   mode = $1
+fi
   
 if [[mode -eq "include_robots"]]; then   
 
@@ -123,6 +124,6 @@ if [[mode -eq "include_robots"]]; then
   echo "##### Clone extra robots #####"
   echo ""
   clone_extra_robots
-  
+fi  
   
 exit 1
