@@ -13,7 +13,7 @@ Run Gateway Dual arm example
    
    ```
    docker exec -it edoras_ws-rosfsw-1 bash
-   cd /code/edoras
+   cd /code/rosws
    ros2 launch edoras_demos gateway_dual_flight_demo_multihost.launch.py
    ```
    
@@ -21,7 +21,7 @@ Run Gateway Dual arm example
    
    ```
    docker exec -it edoras_ws-rosgsw-1 bash
-   cd /code/edoras
+   cd /code/rosws
    ros2 launch edoras_demos gateway_dual_ground_demo_multihost.launch.py
    ```
 

@@ -29,7 +29,7 @@ Steps
 
    ```
    docker exec -it edoras_ws-rosfsw-1 bash
-   cd /code/edoras
+   cd /code/rosws
    ros2 launch edoras_demos rover_flight_demo_multihost.launch.py
    ```
 
@@ -37,7 +37,7 @@ Steps
 
    ```
    docker exec -it edoras_ws-rosgsw-1 bash
-   cd /code/edoras
+   cd /code/rosws
    ros2 launch edoras_demos rover_ground_demo_multihost.launch.py
    ```
 5. In the browser, you can use the RQT Steering GUI (in the ground side) to send a command to the robot on the flight side. You'll see the telemetry being sent back to the ground with the red arrow moving. The robot simulated in Mars is running on the flight side.   

@@ -75,8 +75,8 @@ COPY --chown=${USERNAME}:${USERNAME} config/rosgsw_entrypoint.sh ${CODE_DIR}/ent
 RUN echo 'source ${CODE_DIR}/entrypoint.sh' >> ~/.bashrc
 
 
-RUN mkdir -p ${CODE_DIR}/edoras
-WORKDIR ${CODE_DIR}/edoras
+RUN mkdir -p ${CODE_DIR}/rosws
+WORKDIR ${CODE_DIR}/rosws
 
 ################################################
 # Build rosfsw-dev                             #
@@ -108,7 +108,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 #  ros-jazzy-clearpath-gz \
  && sudo rm -rf /var/lib/apt/lists/*
 
-WORKDIR ${CODE_DIR}/edoras
+WORKDIR ${CODE_DIR}/rosws
 
 
 ##################################################

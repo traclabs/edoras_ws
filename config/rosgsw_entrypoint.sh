@@ -3,9 +3,9 @@
 # Source ROS 2
 source /opt/ros/jazzy/setup.bash
  
-if [ -f /code/edoras/install/setup.bash ]
+if [ -f /code/rosws/install/setup.bash ]
 then
-  source /code/edoras/install/setup.bash
+  source /code/rosws/install/setup.bash
 fi
   
 # Execute the command passed into this entrypoint

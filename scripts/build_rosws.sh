@@ -9,7 +9,7 @@ CODE_DIR="/code"
 
 # Build EDORAS workspace
 build_edoras_code() {
-  docker compose -f ${COMPOSE_FILE} run -w ${CODE_DIR}/edoras rosgsw colcon build --symlink-install
+  docker compose -f ${COMPOSE_FILE} run -w ${CODE_DIR}/rosws rosgsw colcon build --symlink-install
   ret=$?
   if [ $ret -ne 0 ]; then
     echo "!! Failed in colcon build step that builds edoras workspace !!"

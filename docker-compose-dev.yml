@@ -23,8 +23,8 @@ services:
       dockerfile: rosws.Dockerfile
       target: rosgsw-dev
     volumes:
-      - "./edoras:/code/edoras"
-    working_dir: /code/edoras
+      - "./rosws:/code/rosws"
+    working_dir: /code/rosws
   rosfsw:
     extends:
       file: docker-compose-prod.yml
@@ -35,8 +35,8 @@ services:
       dockerfile: rosws.Dockerfile
       target: rosfsw-dev
     volumes:
-      - "./edoras:/code/edoras"
-    working_dir: /code/edoras
+      - "./rosws:/code/rosws"
+    working_dir: /code/rosws
   novnc:
     extends:
       file: docker-compose-prod.yml

@@ -2,6 +2,7 @@
 
 EDORAS_APP_BRANCH="edoras_gateway_dual_arm"
 CFS_BRANCH="edoras_dual_robot_demo"
+ROS_WS="rosws"
 
 # *******************
 # clone_cfs
@@ -44,12 +45,31 @@ clone_edoras_code() {
 # *******************
 clone_edoras() {
 
+  if [ ! -d $ROSWS ]; then
+    mkdir $ROSWS
+  fi
+  
+  pushd rosws
+  if [ ! -d "src" ]; then
+    mkdir src
+  fi
+  
+  pushd src
   if [ ! -d "edoras" ]; then
     echo "* Cloning edoras metapackage... "
-    git clone -b master git@github.com:traclabs/edoras.git edoras
+    git clone -b master git@github.com:traclabs/edoras.git
   fi
 
-  pushd edoras
+  popd
+  popd  
+}
+
+# ************************
+# clone_extra_robots
+# ************************
+clone_extra_robots() {
+
+  pushd $ROSWS
   pushd src
 
   echo "* Cloning additional robots for demos...*"
@@ -91,3 +111,18 @@ echo "##### Clone edoras workspace #####"
 echo ""
 clone_edoras
 
+# Default mode=include_robots
+mode="include_robots" # skip_robots
+
+if [[$# -eq 1]]; then
+  mode = $1
+  
+if [[mode -eq "include_robots"]]; then   
+
+  echo ""
+  echo "##### Clone extra robots #####"
+  echo ""
+  clone_extra_robots
+  
+  
+exit 1
