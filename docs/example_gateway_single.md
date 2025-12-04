@@ -1,6 +1,22 @@
 Run Gateway single-arm example
 =================================
 
+Pre-requisite:
+---------------
+For the single-arm Gateway example, you'll have to change two branches:
+
+* In cFS: Switch to branch *edoras*
+* In edoras_app (located in cFS/apps/edoras_app): Switch to *edoras_gateway_single_arm*
+* Rebuild cFS:
+  ```
+  cd ~/edoras_ws
+  ./scripts/build_cfe.sh
+  ```
+  By default, cFS and edoras_app are cloned in the branches used for running the Gateway dual setup.
+
+Steps
+------
+
 1. Start services:
    ```
    docker compose -f docker-compose-dev.yml up
