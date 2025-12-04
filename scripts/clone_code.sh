@@ -2,7 +2,7 @@
 
 EDORAS_APP_BRANCH="edoras_gateway_dual_arm"
 CFS_BRANCH="edoras_dual_robot_demo"
-ROS_WS="rosws"
+ROSWS="rosws"
 
 # *******************
 # clone_cfs
@@ -49,7 +49,7 @@ clone_edoras() {
     mkdir $ROSWS
   fi
   
-  pushd rosws
+  pushd $ROSWS
   if [ ! -d "src" ]; then
     mkdir src
   fi
@@ -114,11 +114,11 @@ clone_edoras
 # Default mode=include_robots
 mode="include_robots" # skip_robots
 
-if [[$# -eq 1]]; then
+if [[ $# -eq 1 ]]; then
   mode = $1
 fi
   
-if [[mode -eq "include_robots"]]; then   
+if [[ mode -eq "include_robots" ]]; then   
 
   echo ""
   echo "##### Clone extra robots #####"
